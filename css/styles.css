@@ -747,7 +747,7 @@ footer {
 
 @media (max-width: 450px) {
   .pricing-section {
-    width: 80%; /* Set the width to a smaller percentage for mobile */
+    width: 100%; /* Set the width to a smaller percentage for mobile */
     max-width: 600px; /* Limit the max width for better alignment */
     margin: 20px auto; /* Center and add some margin */
     padding: 15px; /* Smaller padding for mobile */
@@ -765,7 +765,6 @@ footer {
     margin: 10px 0; /* Add margin between cards */
   }
 }
-
 
 
 
