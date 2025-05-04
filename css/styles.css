@@ -17,6 +17,7 @@ body {
   top: 0;
   width: 100%;
   z-index: 1000;
+  position: sticky;
 }
 
 .navbar-container {
@@ -141,35 +142,117 @@ footer {
 }
 
 .hero {
-  background-image: url(../images/car_streetwise.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-
   position: relative;
-  height: 800px;
+  background-image: url('../images/car_streetwise.jpg'); /* Update path if needed */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
   display: flex;
   align-items: center;
-  overflow: hidden;
-  margin-bottom: 5em;
+  justify-content: center;
+  color: white;
+  text-align: center;
 }
 
-.hero h2 {
-  position: relative;
-  z-index: 1;
-  font-size: 4.5rem;
-  margin: 0 0 10px;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.9);
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.hero p {
-  position: relative;
-  z-index: 1;
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.4;
+.hero-content {
+  max-width: 800px;
+  padding: 0 20px;
+  
 }
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: black;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    position: relative;
+    min-height: 50vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.65); /* Dark overlay */
+    z-index: 1;
+    min-height: 50vh;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 90%;
+    background: transparent;
+    text-align: center;
+    padding: 10px 15px; /* reduced padding */
+    margin: 0 auto;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5em;
+    color: white;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 1em;
+    color: #ccc;
+  }
+
+  .hero-content a {
+    font-size: 1rem;
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .hero-content a:hover {
+    background-color: black;
+  }
+}
+
 
 /* ========================= */
 
@@ -564,6 +647,87 @@ footer {
   .navbar-container {
     justify-content: space-between;
     align-items: center;
+  }
+}/* Default: Hide mobile nav and burger */
+.burger, .mobile-nav {
+  display: none;
+}
+
+/* MOBILE ONLY STYLES */
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .burger span {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+  }
+
+  .burger.toggle span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .burger.toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger.toggle span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .mobile-nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: rgba(238, 12, 13, 0.98); /* red overlay */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1000;
+  }
+
+  .mobile-nav.open {
+    transform: translateY(0);
+  }
+
+  .mobile-nav ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+  }
+
+  .mobile-nav ul li {
+    margin: 20px 0;
+  }
+
+  .mobile-nav ul li a {
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* Optional: Hide nav on desktop */
+  @media (min-width: 769px) {
+    .mobile-nav {
+      display: none !important;
+    }
   }
 }
 
