@@ -586,6 +586,7 @@ footer {
     gap: 10px;
   }
 
+
   .nav-links {
     flex-direction: column;
     background-color: #ee0c0d;
@@ -602,7 +603,8 @@ footer {
   }
 
   .logo img {
-    height: 80px;
+    height: 175px;
+    display: flex;
   }
 
   .about-container {
