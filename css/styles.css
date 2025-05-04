@@ -745,7 +745,7 @@ footer {
   background-color: #b30000;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 450px) {
   .pricing-section {
     width: 80%; /* Set the width to a smaller percentage for mobile */
     max-width: 600px; /* Limit the max width for better alignment */
