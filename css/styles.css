@@ -65,6 +65,10 @@ body {
   .navbar.open .nav-links {
     display: flex;
   }
+
+  .navbar {
+    background-color: white;
+  }
 }
 
 
