@@ -577,7 +577,7 @@ footer {
 
   .nav-links {
     flex-direction: column;
-    background-color: white;
+    background-color: #ee0c0d;
     position: absolute;
     top: 100px;
     right: 0;
