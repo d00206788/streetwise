@@ -764,12 +764,14 @@ footer {
     margin-bottom: 1rem;
     line-height: 1.2;
     max-width: 800px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .hero-text p {
   font-size: 1.25rem;
   margin-bottom: 20px;
   font-style: italic;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 
