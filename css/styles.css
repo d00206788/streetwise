@@ -783,9 +783,9 @@ footer {
 }
 
 
-.s1 { background-image: url('images/slide1.jpg'); animation-delay: 0s; }
-.s2 { background-image: url('images/slide2.jpg'); animation-delay: 3s; }
-.s3 { background-image: url('images/slide4.jpg'); animation-delay: 6s; }
+.s1 { background-image: url('../images/slide1.jpg'); animation-delay: 0s; }
+.s2 { background-image: url('../images/slide2.jpg'); animation-delay: 3s; }
+.s3 { background-image: url('../images/slide4.jpg'); animation-delay: 6s; }
 
 
 /* Mobile responsive tweaks */
