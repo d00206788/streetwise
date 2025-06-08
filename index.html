@@ -15,7 +15,7 @@
   <header class="navbar">
     <div class="navbar-container">
       <div class="logo">
-        <img src="images/logo_streetwise.jpg" alt="Streetwise Logo" />
+        <img src="images/logostreetwise.png" alt="Streetwise Logo" />
       </div>
       <div class="burger" id="burger">
         <span></span>
@@ -46,15 +46,20 @@
   <main>
     <section id="home"></section>
     <section class="hero">
-      <div class="hero-overlay">
-        <div class="hero-content">
+      <header class="hero-slideshow">
+        <div class="overlay"></div>  <!-- Fullscreen black overlay -->
+        <div class="hero-text">
           <h1>Streetwise Driving School</h1>
           <p>EDT lessons tailored to suit every learning ability in a calm and relaxed environment</p>
-          <a href="#contact" class="hero-btn">Get Started</a>
+          <a href="#contact" class="hero-btn">Contact</a>
         </div>
-      </div>
+      
+        <div class="slide s1"></div>
+        <div class="slide s2"></div>
+        <div class="slide s3"></div>
+      </header>
       </section>
-    
+
 <br><br>
     <section id="about">
     <div class="about-container">
@@ -66,20 +71,25 @@
           Streetwise Driving School is a newly established business that provides EDT lessons and tailored instruction to suit every learning ability in a calm and relaxed environment.
         </p>
         <p>
-          Based in Carrickakelly, Inniskeen, Co. Monaghan, we're dedicated to helping students become confident, safe drivers with personalized instruction that adapts to your learning style.
+          Based in Carrickakelly and Dundalk, we're dedicated to helping students become confident, safe drivers with personalized instruction that adapts to your learning style.
         </p>
-        <br>
         <p>
           <i class="fa fa-star" aria-hidden="true" style="color: red;"> </i> RSA approved instruction for B and BE licenses<br>
           <br>
-          <i class="fa fa-star" aria-hidden="true" style="color: red;"> </i> Manual transmission in an up-to-date car<br>
+          <i class="fa fa-star" aria-hidden="true" style="color: red;"> </i> Manual up-to-date car<br>
           <br>
-          <i class="fa fa-star" aria-hidden="true" style="color: red;"> </i> EDT lessons and refresher lessons available
+          <i class="fa fa-star" aria-hidden="true" style="color: red;"> </i> EDT lessons, refresher lessons, and Reduced EDT lessons available<br>
+          <br>
+          <i class="fa fa-star" aria-hidden="true" style="color: red;"> </i> Lessons can be given in student's own car<br>
+          <br>
+          <i class="fa fa-star" aria-hidden="true" style="color: red;"> </i> Gift vouchers available<br>
+          <br>
+          <i class="fa fa-star" aria-hidden="true" style="color: red;"> </i> Test car available<br>
           <br>
         </p>
       </div>
       <div class="about-image">
-        <img src="images/car_streetwise.jpg" alt="Streetwise Driving School Car">
+        <img src="images/slide5.jpg" alt="Streetwise Driving School Car">
       </div>
     </div>
   </section>
@@ -135,7 +145,7 @@
         <input type="checkbox" id="faq1" class="faq-toggle">
         <label for="faq1" class="faq-question">What do I need for my lessons?</label>
         <div class="faq-answer">
-          For your lessons, 
+          Essential Driver Training (EDT) is a mandatory training course for learner drivers to help improve driving skills and safety.For your lessons, 
           please bring your provisional driving license. It's also helpful to bring glasses or contact lenses if you require them for driving.
         </div>
       </div>
@@ -154,6 +164,7 @@ We'll respond promptly to arrange your lesson
         <label for="faq3" class="faq-question">What happens if I need to cancel a lesson?</label>
         <div class="faq-answer">
           We understand that circumstances can change. We require 48 hours' notice for cancellations to avoid charges. 
+          For cancellations with less than 48 hours' notice, we charge 50% of the lesson fee. No-shows or same-day cancellations are charged at the full lesson rate
         </div>
       </div>
     
@@ -165,25 +176,11 @@ We'll respond promptly to arrange your lesson
           These lessons are mandatory for all learner drivers. While 12 lessons are the minimum, many learners take additional lessons to build confidence and refine their skills
         </div>
       </div>
-
-       <div class="faq-item">
-        <input type="checkbox" id="faq5" class="faq-toggle">
-        <label for="faq5" class="faq-question">What areas do you cover?</label>
-        <div class="faq-answer">
-          We cover Dundalk, Carrickmacross and all surrounding areas.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <input type="checkbox" id="faq6" class="faq-toggle">
-        <label for="faq6" class="faq-question">Do you offer giftcards?</label>
-        <div class="faq-answer">
-          Yes, contact Garry on 087 8348497 or via email streetwisedriveschool@gmail.com for more information
-        </div>
-      </div>
-      
-      
     </div>
+
+
+   
+
 
     <section id="contact"></section>
     <div class="contact-section">
@@ -194,17 +191,11 @@ We'll respond promptly to arrange your lesson
       <div class="contact-info">
         <p><i class="fa fa-phone" aria-hidden="true" style="color: red;"></i> 087 8348497</p>
         <p><i class="fa fa-envelope-o" aria-hidden="true" style="color: red;"></i> streetwisedriveschool@gmail.com</p>
-        <p><i class="fa fa-map-marker" aria-hidden="true" style="color: red;"></i> Carrickakelly, Inniskeen, Co. Monaghan</p>
+        <p><i class="fa fa-map-marker" aria-hidden="true" style="color: red;"></i> Carrickakelly, Inniskeen,Dundalk</p>
         <p><a href="https://www.facebook.com/people/Streetwise-Driving-School/61569731258533/?_rdr"><i class="fa fa-facebook-official fa-lg" aria-hidden="true" style="color: red; "></i></a></p>
     </div>      </div>
 
-      <form class="contact-form">
-          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-          <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-          <textarea id="message" name="message" placeholder="Enter your message here" required></textarea>
-
-          <button type="submit">Submit</button>
-      </form>
+     
 
  
   </div>
@@ -250,6 +241,8 @@ We'll respond promptly to arrange your lesson
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
+ 
 </script>
 
 
