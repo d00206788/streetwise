@@ -18,7 +18,6 @@ body {
   top: 0;
   width: 100%;
   z-index: 1000;
-  position: sticky;
 }
 
 .navbar-container {
@@ -515,6 +514,7 @@ footer {
   }
 
 
+
   .faq-section {
     padding: 0 10px;
   }
@@ -717,6 +717,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 30px;
 }
 
 .overlay {
@@ -724,7 +725,7 @@ footer {
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);  /* semi-transparent black */
+  background: rgba(0,0,0,0.6);  /* semi-transparent black */
   z-index: 5;                   /* below text but above slides */
 }
 
@@ -758,14 +759,19 @@ footer {
 }
 
 .hero-text h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
+     font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    max-width: 800px;
 }
 
 .hero-text p {
   font-size: 1.25rem;
   margin-bottom: 20px;
+  font-style: italic;
 }
+
 
 .hero-btn {
   display: inline-block;
