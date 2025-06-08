@@ -120,8 +120,9 @@ main {
 
 .about-image img {
   width: 90%;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 120px;
 }
 
 
@@ -143,117 +144,7 @@ footer {
   padding: 0 20px;
 }
 
-.hero {
-  position: relative;
-  background-image: url('../images/car_streetwise.jpg'); /* Update path if needed */
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-}
 
-.hero-overlay {
-  background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-content {
-  max-width: 800px;
-  padding: 0 20px;
-  
-}
-
-.hero-content h1 {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-}
-
-.hero-content p {
-  font-size: 1.25rem;
-  margin-bottom: 30px;
-}
-
-.hero-btn {
-  display: inline-block;
-  padding: 15px 30px;
-  background-color: red;
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 30px;
-  transition: background-color 0.3s ease;
-}
-
-.hero-btn:hover {
-  background-color: black;
-}
-
-@media (max-width: 768px) {
-  .hero {
-    position: relative;
-    min-height: 50vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.65); /* Dark overlay */
-    z-index: 1;
-    min-height: 50vh;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 90%;
-    background: transparent;
-    text-align: center;
-    padding: 10px 15px; /* reduced padding */
-    margin: 0 auto;
-  }
-
-  .hero-content h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5em;
-    color: white;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-    margin-bottom: 1em;
-    color: #ccc;
-  }
-
-  .hero-content a {
-    font-size: 1rem;
-    padding: 10px 20px;
-    background-color: red;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-
-  .hero-content a:hover {
-    background-color: black;
-  }
-}
 
 
 /* ========================= */
@@ -394,6 +285,18 @@ footer {
 
 .pricing-card ul li {
   margin-bottom: 10px;
+}
+
+/* Mobile Responsiveness */
+@media only screen and (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pricing-card {
+    padding: 15px;
+    font-size: 1rem;
+  }
 }
 
 
@@ -586,12 +489,17 @@ footer {
     padding: 10px 0;
   }
 
+  .navbar {
+    background-color: transparent;
+    position: static;
+  }
+
   .navbar.open .nav-links {
     display: flex;
   }
 
   .logo img {
-    height: 195px;
+    height: 175px;
     display: flex;
   }
 
@@ -603,26 +511,8 @@ footer {
 
   .about-image img {
     width: 100%;
+    margin-top: 1px;
   }
-
-  .hero {
-    height: auto;
-    padding: 40px 20px;
-    background-attachment: scroll;
-    text-align: center;
-    flex-direction: column;
-  }
-
-  .hero h2 {
-    font-size: 2.5rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-
-  
 
 
   .faq-section {
@@ -734,7 +624,7 @@ footer {
   .burger span {
     width: 25px;
     height: 3px;
-    background: #fff;
+    background: black;
     transition: all 0.3s ease;
     border-radius: 2px;
   }
@@ -817,6 +707,130 @@ footer {
   background-color: #b30000;
 }
 
+
+.hero-slideshow {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);  /* semi-transparent black */
+  z-index: 5;                   /* below text but above slides */
+}
+
+.slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0;
+  animation-name: fadeinout;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 9s; /* 3 slides × 3s each */
+}
+
+@keyframes fadeinout {
+  0%    { opacity: 0; }
+  11.11%  { opacity: 1; }  /* fade in */
+  33.33%  { opacity: 1; }  /* stay visible */
+  44.44%  { opacity: 0; }  /* fade out */
+  100%   { opacity: 0; }
+}
+
+.hero-text {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+.hero-btn {
+  display: inline-block;
+  background: red;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 50px;  /* big enough for pill shape */
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  background: #ddd;
+}
+
+
+.s1 { background-image: url('../images/slide1.jpg'); animation-delay: 0s; }
+.s2 { background-image: url('../images/slide2.jpg'); animation-delay: 3s; }
+.s3 { background-image: url('../images/slide4.jpg'); animation-delay: 6s; }
+
+
+/* Mobile responsive tweaks */
+@media (max-width: 768px) {
+  .hero-slideshow {
+    height: 60vh; /* less height on smaller screens */
+  }
+
+  .hero-text {
+    padding: 15px 20px;
+    max-width: 90%;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-btn {
+    padding: 8px 16px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-slideshow {
+    height: 50vh;
+  }
+
+  .hero-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+
+  .hero-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
 
 
 
