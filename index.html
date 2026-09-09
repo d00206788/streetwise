@@ -300,40 +300,29 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-
-document.addEventListener('DOMContentLoaded', function () {
-
-    const gallery = document.querySelector('.gallery');
-    const images = document.querySelectorAll('.gallery img');
-
-    let current = 0;
-
-    document.querySelector('.next').addEventListener('click', () => {
-        if (current < images.length - 1) {
-            current++;
-        } else {
-            current = 0;
-        }
-
-        gallery.scrollTo({
-            left: gallery.clientWidth * current,
-            behavior: 'smooth'
-        });
-    });
-
-    document.querySelector('.prev').addEventListener('click', () => {
-        if (current > 0) {
-            current--;
-        } else {
-            current = images.length - 1;
-        }
-
-        gallery.scrollTo({
-            left: gallery.clientWidth * current,
-            behavior: 'smooth'
-        });
-    });
-
+document.addEventListener('DOMContentLoaded', () => {
+ 
+const slides = document.querySelectorAll('.gallery img');
+let current = 0;
+ 
+function showSlide(index) {
+slides.forEach((slide, i) => {
+slide.style.display = i === index ? 'block' : 'none';
+});
+}
+ 
+showSlide(0);
+ 
+document.querySelector('.next').addEventListener('click', () => {
+current = (current + 1) % slides.length;
+showSlide(current);
+});
+ 
+document.querySelector('.prev').addEventListener('click', () => {
+current = (current - 1 + slides.length) % slides.length;
+showSlide(current);
+});
+ 
 });
 
 
