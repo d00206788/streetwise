@@ -59,30 +59,41 @@ body {
     transform: scale(1.03);
 }
 
+.gallery-wrapper {
+    position: relative;
+}
+
+.gallery-btn {
+    display: none;
+}
+
 @media (max-width: 768px) {
-    .gallery {
-        display: flex !important;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        gap: 10px;
-        padding-bottom: 10px;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
+    .gallery-btn {
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        border: none;
+        background: rgba(255,255,255,0.9);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
 
-    .gallery::-webkit-scrollbar {
-        display: none;
+    .prev {
+        left: 10px;
     }
 
-    .gallery img {
-        min-width: 85%;
-        width: 85%;
-        flex-shrink: 0;
-        aspect-ratio: 4 / 5;
-        object-fit: cover;
-        scroll-snap-align: center;
+    .next {
+        right: 10px;
     }
 }
+
+
 
 .navbar-container {
   max-width: 1200px;
