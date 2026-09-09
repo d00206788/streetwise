@@ -299,36 +299,82 @@
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
+    
 document.addEventListener('DOMContentLoaded', () => {
 
+    const gallery = document.querySelector('.gallery');
     const slides = document.querySelectorAll('.gallery img');
     const next = document.querySelector('.next');
     const prev = document.querySelector('.prev');
 
+    if (!gallery || !slides.length || !next || !prev) return;
+
     let current = 0;
+    let autoSlide;
 
     function showSlide(index) {
-        slides.forEach(slide => {
-            slide.style.display = 'none';
-        });
+        current = (index + slides.length) % slides.length;
 
-        slides[index].style.display = 'block';
+        gallery.style.transform = `translateX(-${current * 100}%)`;
     }
 
-    if (true){
-        showSlide(0);
+    // Next button
+    next.addEventListener('click', () => {
+        showSlide(current + 1);
+        resetAutoSlide();
+    });
 
-        next.addEventListener('click', () => {
-            current = (current + 1) % slides.length;
-            showSlide(current);
-        });
+    // Previous button
+    prev.addEventListener('click', () => {
+        showSlide(current - 1);
+        resetAutoSlide();
+    });
 
-        prev.addEventListener('click', () => {
-            current = (current - 1 + slides.length) % slides.length;
-            showSlide(current);
-        });
+    // Automatic slideshow
+    function startAutoSlide() {
+        autoSlide = setInterval(() => {
+            showSlide(current + 1);
+        }, 4000);
     }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlide);
+        startAutoSlide();
+    }
+
+    // Swipe support
+    let startX = 0;
+    let endX = 0;
+
+    gallery.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    gallery.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+
+        const difference = startX - endX;
+
+        // Swipe left
+        if (difference > 50) {
+            showSlide(current + 1);
+            resetAutoSlide();
+        }
+
+        // Swipe right
+        if (difference < -50) {
+            showSlide(current - 1);
+            resetAutoSlide();
+        }
+    }, { passive: true });
+
+    // Start slideshow
+    showSlide(0);
+    startAutoSlide();
+
 });
+
 
 
 
