@@ -81,12 +81,15 @@ body {
     }
 
     .gallery img {
-        display: none;
         width: 100%;
         border-radius: 20px;
         aspect-ratio: 4/5;
         object-fit: cover;
     }
+
+  .gallery img:first-child {
+    display: block;
+}
 
     .gallery-btn {
         display: block;
