@@ -298,6 +298,148 @@
     });
   });
 
+document.addEventListener("DOMContentLoaded", function () {
+
+    const gallery = document.querySelector(".gallery");
+    const slides = document.querySelectorAll(".gallery img");
+    const nextButton = document.querySelector(".gallery-btn.next");
+    const prevButton = document.querySelector(".gallery-btn.prev");
+    const dotsContainer = document.querySelector(".gallery-dots");
+    const currentNumber = document.getElementById("gallery-current");
+    const totalNumber = document.getElementById("gallery-total");
+
+    // Make sure everything exists
+    if (
+        !gallery ||
+        slides.length === 0 ||
+        !nextButton ||
+        !prevButton
+    ) {
+        console.log("Gallery elements not found");
+        return;
+    }
+
+    let currentSlide = 0;
+    let autoSlide;
+
+
+    // Number of slides
+    if (totalNumber) {
+        totalNumber.textContent = slides.length;
+    }
+
+
+    // Create dots
+    if (dotsContainer) {
+
+        slides.forEach(function (slide, index) {
+
+            const dot = document.createElement("button");
+
+            dot.className = "gallery-dot";
+
+            dot.setAttribute(
+                "aria-label",
+                "Show pass " + (index + 1)
+            );
+
+            dot.addEventListener("click", function () {
+
+                showSlide(index);
+                restartAutoSlide();
+
+            });
+
+            dotsContainer.appendChild(dot);
+
+        });
+
+    }
+
+
+    function showSlide(index) {
+
+        currentSlide =
+            (index + slides.length) % slides.length;
+
+        // Move gallery
+        gallery.style.transform =
+            "translateX(-" + (currentSlide * 100) + "%)";
+
+
+        // Update number
+        if (currentNumber) {
+            currentNumber.textContent =
+                currentSlide + 1;
+        }
+
+
+        // Update dots
+        const dots =
+            document.querySelectorAll(".gallery-dot");
+
+        dots.forEach(function (dot, index) {
+
+            dot.classList.toggle(
+                "active",
+                index === currentSlide
+            );
+
+        });
+
+    }
+
+
+    // NEXT BUTTON
+    nextButton.addEventListener("click", function () {
+
+        showSlide(currentSlide + 1);
+
+        restartAutoSlide();
+
+    });
+
+
+    // PREVIOUS BUTTON
+    prevButton.addEventListener("click", function () {
+
+        showSlide(currentSlide - 1);
+
+        restartAutoSlide();
+
+    });
+
+
+    // AUTO SLIDE
+    function startAutoSlide() {
+
+        autoSlide = setInterval(function () {
+
+            showSlide(currentSlide + 1);
+
+        }, 4000);
+
+    }
+
+
+    // Restart timer after manually clicking
+    function restartAutoSlide() {
+
+        clearInterval(autoSlide);
+
+        startAutoSlide();
+
+    }
+
+
+    // Start gallery
+    showSlide(0);
+
+    startAutoSlide();
+
+});
+
+
     
 
 
