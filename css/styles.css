@@ -69,10 +69,12 @@ body {
 }
 
 
+
 @media (max-width: 768px) {
 
     .gallery-wrapper {
         position: relative;
+        width: 100%;
         max-width: 500px;
         margin: 0 auto;
         overflow: hidden;
@@ -80,50 +82,124 @@ body {
     }
 
     .gallery {
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 0;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        align-items: stretch;
+
         width: 100%;
+
+        gap: 0 !important;
+        margin: 0;
+        padding: 0;
+
         transition: transform 0.5s ease-in-out;
-        touch-action: pan-y;
     }
 
     .gallery img {
-        flex: 0 0 100%;
-        width: 100%;
+        display: block !important;
+
+        /* THIS is the important part */
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+
+        flex: 0 0 100% !important;
+
+        margin: 0 !important;
+
         aspect-ratio: 4 / 5;
         object-fit: cover;
+
         border-radius: 20px;
-        display: block;
+
+        transform: none !important;
     }
 
+
+    /* ARROWS */
+
     .gallery-btn {
-        display: block;
+        display: flex !important;
+
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.25);
-        border: none;
+
+        width: 50px;
+        height: 65px;
+
+        align-items: center;
+        justify-content: center;
+
+        background: rgba(0, 0, 0, 0.6);
         color: white;
-        font-size: 30px;
-        width: 45px;
-        height: 60px;
-        cursor: pointer;
-        z-index: 10;
+
+        border: none;
         border-radius: 10px;
+
+        font-size: 42px;
+        line-height: 1;
+
+        cursor: pointer;
+
+        z-index: 100;
     }
 
-    .gallery-btn:active {
-        background: rgba(0, 0, 0, 0.5);
+    .gallery-btn.prev {
+        left: 8px;
     }
 
-    .prev {
-        left: 5px;
+    .gallery-btn.next {
+        right: 8px;
     }
 
-    .next {
-        right: 5px;
+
+    /* COUNTER */
+
+    .gallery-counter {
+        display: block;
+        text-align: center;
+        margin-top: 12px;
+
+        font-size: 15px;
+        font-weight: bold;
+        color: #555;
     }
+
+
+    /* DOTS */
+
+    .gallery-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        gap: 6px;
+        margin-top: 12px;
+    }
+
+    .gallery-dot {
+        width: 8px !important;
+        min-width: 8px !important;
+        height: 8px;
+
+        padding: 0;
+        margin: 0;
+
+        border: none;
+        border-radius: 50%;
+
+        background: #ccc;
+        cursor: pointer;
+    }
+
+    .gallery-dot.active {
+        background: red;
+        transform: scale(1.4);
+    }
+
 }
 
 
