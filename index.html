@@ -148,6 +148,12 @@
           <span class="underline"></span>
         <br>
         </div>
+<div class="gallery-wrapper">
+ 
+<button class="gallery-btn prev">&#10094;</button>
+ 
+
+ 
 
         <div class="gallery">
           <img src="images/1000025265.jpg" alt="passes">
@@ -169,6 +175,9 @@
           <img src="images/1000025263.jpg" alt="passes">
           <img src="images/1000025264.jpg" alt="passes">
         </div>
+  <button class="gallery-btn next">&#10095;</button>
+ 
+
 
     </div>
 </section>
@@ -291,6 +300,23 @@
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
+
+const gallery = document.querySelector('.gallery');
+
+document.querySelector('.next').addEventListener('click', () => {
+    gallery.scrollBy({
+        left: gallery.offsetWidth,
+        behavior: 'smooth'
+    });
+});
+
+document.querySelector('.prev').addEventListener('click', () => {
+    gallery.scrollBy({
+        left: -gallery.offsetWidth,
+        behavior: 'smooth'
+    });
+});
 
  
 </script>
