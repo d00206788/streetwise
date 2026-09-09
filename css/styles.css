@@ -69,26 +69,35 @@ body {
 }
 
 @media (max-width: 768px) {
+
+    .gallery {
+        display: flex;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+    }
+
+    .gallery img {
+        min-width: 100%;
+        width: 100%;
+        flex-shrink: 0;
+        border-radius: 20px;
+    }
+
+    .gallery-wrapper {
+        position: relative;
+    }
+
     .gallery-btn {
-        display: block;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        z-index: 10;
         border: none;
-        background: rgba(255,255,255,0.9);
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
+        background: transparent;
+        color: red;
+        font-size: 40px;
         cursor: pointer;
-        font-size: 20px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        z-index: 10;
     }
-
-  .gallery img {
-    flex: 0 0 100%;
-    width: 100%;
-}
 
     .prev {
         left: 10px;
