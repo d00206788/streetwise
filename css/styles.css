@@ -70,42 +70,43 @@ body {
 
 @media (max-width: 768px) {
 
+    .gallery-wrapper {
+        position: relative;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
     .gallery {
-        display: flex;
-        overflow: hidden;
-        width: 100%;
+        display: block;
     }
 
     .gallery img {
-        min-width: 100%;
+        display: none;
         width: 100%;
-        flex-shrink: 0;
         border-radius: 20px;
-    }
-
-    .gallery-wrapper {
-        position: relative;
+        aspect-ratio: 4/5;
+        object-fit: cover;
     }
 
     .gallery-btn {
-      display: block;
+        display: block;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         background: none;
         border: none;
-        font-size: 40px;
         color: red;
+        font-size: 40px;
         cursor: pointer;
-        z-index: 10;
+        z-index: 999;
     }
 
     .prev {
-        left: 10px;
+        left: -10px;
     }
 
     .next {
-        right: 10px;
+        right: -10px;
     }
 }
 
