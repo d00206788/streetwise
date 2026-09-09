@@ -72,8 +72,8 @@ body {
 
     .gallery {
         display: flex;
-        overflow-x: hidden;
-        scroll-behavior: smooth;
+        overflow: hidden;
+        width: 100%;
     }
 
     .gallery img {
@@ -91,10 +91,10 @@ body {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
+        background: none;
         border: none;
-        background: transparent;
-        color: red;
         font-size: 40px;
+        color: red;
         cursor: pointer;
         z-index: 10;
     }
