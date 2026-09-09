@@ -301,6 +301,43 @@
   });
 
 
+document.addEventListener('DOMContentLoaded', function () {
+
+    const gallery = document.querySelector('.gallery');
+    const images = document.querySelectorAll('.gallery img');
+
+    let current = 0;
+
+    document.querySelector('.next').addEventListener('click', () => {
+        if (current < images.length - 1) {
+            current++;
+        } else {
+            current = 0;
+        }
+
+        gallery.scrollTo({
+            left: gallery.clientWidth * current,
+            behavior: 'smooth'
+        });
+    });
+
+    document.querySelector('.prev').addEventListener('click', () => {
+        if (current > 0) {
+            current--;
+        } else {
+            current = images.length - 1;
+        }
+
+        gallery.scrollTo({
+            left: gallery.clientWidth * current,
+            behavior: 'smooth'
+        });
+    });
+
+});
+
+
+
 
 
  
