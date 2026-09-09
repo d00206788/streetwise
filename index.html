@@ -153,7 +153,7 @@
  
 
  
-<button class="gallery-btn prev">&#10094;</button> 
+<button class="gallery-btn prev">❮</button> 
         <div class="gallery">
           <img src="images/1000025265.jpg" alt="passes">
           <img src="images/1000025266.jpg" alt="passes">
@@ -174,7 +174,7 @@
           <img src="images/1000025263.jpg" alt="passes">
           <img src="images/1000025264.jpg" alt="passes">
         </div>
-   <button class="gallery-btn next">&#10095;</button>
+   <button class="gallery-btn next">❯</button>
  
 
 
@@ -301,36 +301,33 @@
   });
 document.addEventListener('DOMContentLoaded', () => {
 
+    const slides = document.querySelectorAll('.gallery img');
+    const next = document.querySelector('.next');
+    const prev = document.querySelector('.prev');
+
+    let current = 0;
+
+    function showSlide(index) {
+        slides.forEach(slide => {
+            slide.style.display = 'none';
+        });
+
+        slides[index].style.display = 'block';
+    }
+
     if (window.innerWidth <= 768) {
-
-        const slides = document.querySelectorAll('.gallery img');
-        const next = document.querySelector('.next');
-        const prev = document.querySelector('.prev');
-
-        let current = 0;
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.style.display = i === index ? 'block' : 'none';
-            });
-        }
-
         showSlide(0);
 
         next.addEventListener('click', () => {
-            current++;
-            if (current >= slides.length) current = 0;
+            current = (current + 1) % slides.length;
             showSlide(current);
         });
 
         prev.addEventListener('click', () => {
-            current--;
-            if (current < 0) current = slides.length - 1;
+            current = (current - 1 + slides.length) % slides.length;
             showSlide(current);
         });
-
     }
-
 });
 
 
