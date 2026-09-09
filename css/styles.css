@@ -25,7 +25,6 @@ body {
 
 #passes {
     padding: 80px 20px;
-    background: #f8f9fa;
     text-align: center;
 }
 
@@ -52,11 +51,13 @@ body {
     width: 220px;
     aspect-ratio: 4/5;
     object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease;
 }
 
-
 .gallery img:hover {
-    transform: scale(1.03);
+    transform: translateY(-5px);
 }
 
 .gallery-wrapper {
