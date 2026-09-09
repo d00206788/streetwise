@@ -372,7 +372,13 @@ footer {
   margin: 0 auto;
 }
 
-
+.section-title .underline {
+  display: inline-block;
+  width: 100px;
+  height: 4px;
+  background-color: #e30000;
+  margin: 0 auto;
+}
 
 .pricing-grid {
   display: grid;
