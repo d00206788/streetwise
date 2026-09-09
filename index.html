@@ -284,24 +284,29 @@
     <p>&copy; 2025 Streetwise Driving School. All rights reserved.</p>
   </footer>
 
-  <script>
-  const burger = document.getElementById('burger');
-  const mobileNav = document.getElementById('mobileNav');
-  const navLinks = document.querySelectorAll('#mobileNav a');
+<script>
+const burger = document.getElementById('burger');
+const mobileNav = document.getElementById('mobileNav');
+const navLinks = document.querySelectorAll('#mobileNav a');
 
-  // Toggle mobile menu
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('toggle');
-    mobileNav.classList.toggle('open');
-  });
+// Toggle mobile menu
+burger.addEventListener('click', () => {
+  burger.classList.toggle('toggle');
+  mobileNav.classList.toggle('open');
+});
 
-  // Close menu on link click
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      burger.classList.remove('toggle');
-      mobileNav.classList.remove('open');
-    });
+// Close menu on link click
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    burger.classList.remove('toggle');
+    mobileNav.classList.remove('open');
   });
+});
+
+
+/* ========================================
+   GALLERY - MOBILE ONLY
+======================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -310,27 +315,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextButton = document.querySelector(".gallery-btn.next");
     const prevButton = document.querySelector(".gallery-btn.prev");
     const dotsContainer = document.querySelector(".gallery-dots");
-    const currentNumber = document.getElementById("gallery-current");
-    const totalNumber = document.getElementById("gallery-total");
 
-    // Make sure everything exists
-    if (
-        !gallery ||
-        slides.length === 0 ||
-        !nextButton ||
-        !prevButton
-    ) {
-        console.log("Gallery elements not found");
+    if (!gallery || slides.length === 0) {
         return;
     }
 
     let currentSlide = 0;
-    let autoSlide;
+    let autoSlide = null;
 
-
-    // Number of slides
-    if (totalNumber) {
-        totalNumber.textContent = slides.length;
+    // Check if we're on mobile
+    function isMobile() {
+        return window.innerWidth <= 768;
     }
 
 
@@ -350,6 +345,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             dot.addEventListener("click", function () {
 
+                if (!isMobile()) return;
+
                 showSlide(index);
                 restartAutoSlide();
 
@@ -362,21 +359,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    // Show slide
     function showSlide(index) {
+
+        // DO NOTHING ON DESKTOP
+        if (!isMobile()) {
+            gallery.style.transform = "none";
+            return;
+        }
 
         currentSlide =
             (index + slides.length) % slides.length;
 
-        // Move gallery
         gallery.style.transform =
             "translateX(-" + (currentSlide * 100) + "%)";
-
-
-        // Update number
-        if (currentNumber) {
-            currentNumber.textContent =
-                currentSlide + 1;
-        }
 
 
         // Update dots
@@ -396,64 +392,95 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // NEXT BUTTON
-    nextButton.addEventListener("click", function () {
+    if (nextButton) {
 
-        showSlide(currentSlide + 1);
+        nextButton.addEventListener("click", function () {
 
-        restartAutoSlide();
+            if (!isMobile()) return;
 
-    });
+            showSlide(currentSlide + 1);
+            restartAutoSlide();
+
+        });
+
+    }
 
 
     // PREVIOUS BUTTON
-    prevButton.addEventListener("click", function () {
+    if (prevButton) {
 
-        showSlide(currentSlide - 1);
+        prevButton.addEventListener("click", function () {
 
-        restartAutoSlide();
+            if (!isMobile()) return;
 
-    });
+            showSlide(currentSlide - 1);
+            restartAutoSlide();
+
+        });
+
+    }
 
 
-    // AUTO SLIDE
+    // Start automatic slideshow
     function startAutoSlide() {
+
+        // Don't run slideshow on desktop
+        if (!isMobile()) return;
+
+        clearInterval(autoSlide);
 
         autoSlide = setInterval(function () {
 
-            showSlide(currentSlide + 1);
+            if (isMobile()) {
+                showSlide(currentSlide + 1);
+            }
 
         }, 4000);
 
     }
 
 
-    // Restart timer after manually clicking
+    // Restart timer
     function restartAutoSlide() {
 
         clearInterval(autoSlide);
 
-        startAutoSlide();
+        if (isMobile()) {
+            startAutoSlide();
+        }
 
     }
 
 
-    // Start gallery
-    showSlide(0);
+    // Handle resizing between mobile and desktop
+    function handleResize() {
 
-    startAutoSlide();
+        if (isMobile()) {
+
+            showSlide(currentSlide);
+            startAutoSlide();
+
+        } else {
+
+            // Completely reset gallery on desktop
+            clearInterval(autoSlide);
+            autoSlide = null;
+
+            gallery.style.transform = "none";
+
+        }
+
+    }
+
+
+    // Initial setup
+    handleResize();
+
+
+    // Watch for screen size changes
+    window.addEventListener("resize", handleResize);
 
 });
-
-
-    
-
-
-
-
-
-
-
- 
 </script>
 
 
